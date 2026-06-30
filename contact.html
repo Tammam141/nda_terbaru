@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="description" content="Hubungi NDA Official — Chat via WhatsApp, kunjungi Instagram, atau temukan kami di Shopee dan TikTok." />
+  <meta name="theme-color" content="#5D7CA9" />
+  <title>Hubungi Kami | NDA Official</title>
+  <link rel="website icon" type="image/png" href="Gambar/1233.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══ ALERT BANNER ══ -->
+  <div id="alert-banner" role="alert">
+    <span id="supabase-promo-text" data-i18n="alert_text">🌙 Promo Spesial Gajian: Diskon s.d 15% di Shopee! &nbsp;·&nbsp; <a href="https://shopee.co.id" target="_blank" rel="noopener noreferrer">Belanja Sekarang →</a></span>
+    <button class="alert-close" id="alert-close-btn" aria-label="Tutup Banner">✕</button>
+  </div>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav id="main-navbar" role="navigation" aria-label="Navigasi Utama">
+    <div class="container">
+      <div class="navbar-inner">
+        <a href="index.html" class="navbar-brand" aria-label="NDA Official">
+          <img src="Gambar/1233.png" alt="NDA Official Logo" class="navbar-logo" />
+          <span class="navbar-brand-text">NDA Official</span>
+        </a>
+        <ul class="navbar-nav" id="desktop-nav">
+          <li><a href="index.html"    class="nav-link" data-i18n="nav_home">Home</a></li>
+          <li><a href="katalog.html" class="nav-link" data-i18n="nav_katalog">Katalog</a></li>
+          <li><a href="about.html"   class="nav-link" data-i18n="nav_about">Tentang Kami</a></li>
+          <li><a href="contact.html" class="nav-link active" data-i18n="nav_contact">Hubungi Kami</a></li>
+        </ul>
+        <div class="navbar-tools">
+          <div class="lang-dropdown" id="lang-dropdown">
+            <button class="lang-btn" id="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Pilih Bahasa">
+              <i class="fas fa-globe"></i>
+              <span id="current-lang-label">ID</span>
+              <i class="fas fa-caret-down"></i>
+            </button>
+            <div class="lang-dropdown-menu" id="lang-menu" role="listbox">
+              <div class="lang-option active" data-lang="id" role="option" tabindex="0">🇮🇩 Bahasa Indonesia</div>
+              <div class="lang-option" data-lang="en" role="option" tabindex="0">🇬🇧 English</div>
+            </div>
+          </div>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button class="hamburger" id="hamburger" aria-label="Buka Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html"    class="nav-link" data-i18n="nav_home">Home</a>
+      <a href="katalog.html" class="nav-link" data-i18n="nav_katalog">Katalog</a>
+      <a href="about.html"   class="nav-link" data-i18n="nav_about">Tentang Kami</a>
+      <a href="contact.html" class="nav-link" data-i18n="nav_contact">Hubungi Kami</a>
+    </div>
+  </nav>
+
+  <!-- ══ PAGE HERO ══ -->
+  <header class="page-hero" aria-label="Hubungi Kami">
+    <div class="container">
+      <div class="page-hero-badge" data-i18n="kontak_badge">Hubungi Kami</div>
+      <h1 data-i18n="page_contact_title">Siap Membantu Anda</h1>
+      <p data-i18n="page_contact_desc">Pilih salah satu saluran kontak di bawah ini untuk terhubung dengan tim admin NDA Official.</p>
+    </div>
+  </header>
+
+  <!-- ══ CONTACT CARDS ══ -->
+  <main>
+    <section style="padding: var(--section-padding); background: var(--nda-bg-main); transition: background var(--transition-slow);" aria-labelledby="contact-heading">
+      <div class="container">
+
+        <div class="text-center reveal" style="margin-bottom: 0;">
+          <h2 class="section-heading" id="contact-heading" data-i18n="kontak_title">Kami Hadir Untuk Anda</h2>
+          <p class="section-subtext" data-i18n="kontak_sub">Hubungi tim admin kami untuk layanan konsultasi, pertanyaan produk, atau informasi lebih lanjut.</p>
+        </div>
+
+        <div class="contact-page-grid">
+
+          <!-- WhatsApp -->
+          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="contact-card reveal" aria-label="Hubungi via WhatsApp">
+            <div class="contact-card-icon" style="background:linear-gradient(135deg,#25D366,#1aad53);box-shadow:0 6px 20px rgba(37,211,102,0.35);">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <span class="contact-card-title" data-i18n="kontak_wa_title">WhatsApp</span>
+            <span class="contact-card-sub" data-i18n="kontak_wa_sub">Chat dengan Admin</span>
+            <span style="font-size:0.8rem; color:var(--nda-primary); font-weight:600; margin-top:0.25rem;">+62 812-3456-7890</span>
+          </a>
+
+          <!-- Instagram -->
+          <a href="https://instagram.com/nda.official" target="_blank" rel="noopener noreferrer" class="contact-card reveal" aria-label="Instagram NDA Official">
+            <div class="contact-card-icon" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366);box-shadow:0 6px 20px rgba(220,39,67,0.3);">
+              <i class="fab fa-instagram"></i>
+            </div>
+            <span class="contact-card-title" data-i18n="kontak_ig_title">Instagram</span>
+            <span class="contact-card-sub">@nda.official</span>
+            <span style="font-size:0.8rem; color:var(--nda-primary); font-weight:600; margin-top:0.25rem;" data-i18n="contact_ig_sub">Lihat Koleksi & Story</span>
+          </a>
+
+          <!-- Shopee -->
+          <a href="https://shopee.co.id" target="_blank" rel="noopener noreferrer" class="contact-card reveal" aria-label="Toko Shopee NDA Official">
+            <div class="contact-card-icon" style="background:linear-gradient(135deg,#EE4D2D,#d63b1c);box-shadow:0 6px 20px rgba(238,77,45,0.3);">
+              <i class="fas fa-store"></i>
+            </div>
+            <span class="contact-card-title" data-i18n="kontak_shopee_title">Shopee</span>
+            <span class="contact-card-sub" data-i18n="kontak_shopee_sub">Kunjungi Toko Kami</span>
+            <span style="font-size:0.8rem; color:var(--nda-primary); font-weight:600; margin-top:0.25rem;" data-i18n="contact_shopee_sub">Gratis Ongkir Tersedia</span>
+          </a>
+
+          <!-- TikTok -->
+          <a href="https://tiktok.com/@nda.official" target="_blank" rel="noopener noreferrer" class="contact-card reveal" aria-label="TikTok NDA Official">
+            <div class="contact-card-icon" style="background:linear-gradient(135deg,#010101,#222);box-shadow:0 6px 20px rgba(0,0,0,0.35);">
+              <i class="fab fa-tiktok"></i>
+            </div>
+            <span class="contact-card-title" data-i18n="kontak_tiktok_title">TikTok</span>
+            <span class="contact-card-sub">@nda.official</span>
+            <span style="font-size:0.8rem; color:var(--nda-primary); font-weight:600; margin-top:0.25rem;" data-i18n="contact_tiktok_sub">TikTok Shop & Video</span>
+          </a>
+
+        </div><!-- /contact-page-grid -->
+
+        <!-- Email card (full width) -->
+        <div class="reveal" style="margin-top: 1.25rem;">
+          <a href="mailto:ndajayaselalu@gmail.com" class="contact-card" style="flex-direction:row; gap:1.5rem; max-width:500px; margin:0 auto;" aria-label="Email NDA">
+            <div class="contact-card-icon" style="background:linear-gradient(135deg,var(--nda-primary),var(--nda-primary-light));box-shadow:0 6px 20px rgba(93,124,169,0.35); flex-shrink:0;">
+              <ph-icon name="envelope" weight="fill"></ph-icon>
+            </div>
+            <div style="text-align:left;">
+              <span class="contact-card-title" data-i18n="contact_email_title">Email</span><br/>
+              <span class="contact-card-sub">ndajayaselalu@gmail.com</span>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ FAQ STRIP ══ -->
+    <section style="padding: var(--section-padding); background: var(--nda-bg-secondary); transition: background var(--transition-slow);" aria-label="FAQ">
+      <div class="container">
+        <div class="text-center reveal">
+          <span class="section-badge" data-i18n="faq_badge">FAQ</span>
+          <h2 class="section-heading" data-i18n="faq_title">Pertanyaan yang Sering Diajukan</h2>
+        </div>
+        <div style="max-width:700px; margin: var(--space-xl) auto 0; display:flex; flex-direction:column; gap:1rem;">
+
+          <div class="reveal" style="background:var(--nda-bg-card); border-radius:var(--radius-lg); padding:1.5rem; border:1px solid var(--glass-border); box-shadow:var(--shadow-sm);">
+            <h3 style="font-family:var(--font-heading); font-size:1rem; font-weight:700; color:var(--nda-primary); margin-bottom:0.5rem;" data-i18n="faq_q1">Bagaimana cara memesan?</h3>
+            <p style="font-size:0.88rem; color:var(--nda-neutral-mid); line-height:1.7;" data-i18n="faq_a1">Klik tombol "Pesan via WhatsApp" di halaman produk, lalu admin kami akan membantu proses pemesanan Anda secara langsung.</p>
+          </div>
+
+          <div class="reveal" style="background:var(--nda-bg-card); border-radius:var(--radius-lg); padding:1.5rem; border:1px solid var(--glass-border); box-shadow:var(--shadow-sm);">
+            <h3 style="font-family:var(--font-heading); font-size:1rem; font-weight:700; color:var(--nda-primary); margin-bottom:0.5rem;" data-i18n="faq_q2">Berapa lama pengiriman?</h3>
+            <p style="font-size:0.88rem; color:var(--nda-neutral-mid); line-height:1.7;" data-i18n="faq_a2">Pesanan diproses dalam 1x24 jam. Estimasi pengiriman 2–5 hari kerja tergantung lokasi Anda.</p>
+          </div>
+
+          <div class="reveal" style="background:var(--nda-bg-card); border-radius:var(--radius-lg); padding:1.5rem; border:1px solid var(--glass-border); box-shadow:var(--shadow-sm);">
+            <h3 style="font-family:var(--font-heading); font-size:1rem; font-weight:700; color:var(--nda-primary); margin-bottom:0.5rem;" data-i18n="faq_q3">Apakah ada pilihan warna lain?</h3>
+            <p style="font-size:0.88rem; color:var(--nda-neutral-mid); line-height:1.7;" data-i18n="faq_a3">Ya! Hubungi admin kami via WhatsApp untuk melihat variasi warna dan stok terbaru yang tersedia.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ FOOTER ══ -->
+  <footer id="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="Gambar/1233.png" alt="NDA Official" class="footer-logo" />
+          <p class="footer-tagline" data-i18n="footer_tagline">Bring Beuty Feel Comfort.</p>
+        </div>
+        <div class="footer-socials">
+          <a href="https://instagram.com/nda.official" target="_blank" rel="noopener noreferrer" class="social-link ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link fb" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://shopee.co.id" target="_blank" rel="noopener noreferrer" class="social-link shopee" aria-label="Shopee"><i class="fas fa-store"></i></a>
+          <a href="https://tiktok.com/@nda.official" target="_blank" rel="noopener noreferrer" class="social-link tiktok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-divider" style="margin:1.5rem 0;"></div>
+      <p class="footer-copyright text-center" data-i18n="footer_copyright">© 2026 NDA Official. Seluruh Hak Cipta Dilindungi.</p>
+    </div>
+  </footer>
+
+  <!-- ══ BOTTOM NAVIGATION (mobile) ══ -->
+  <nav id="bottom-nav" aria-label="Navigasi Bawah">
+    <div class="bottom-nav-inner">
+      <a href="index.html" class="bottom-nav-item" id="bnav-home">
+        <i class="fas fa-home"></i>
+        <span class="bottom-nav-label" data-i18n="nav_home">Home</span>
+      </a>
+      <a href="katalog.html" class="bottom-nav-item" id="bnav-katalog">
+        <i class="fas fa-book-open"></i>
+        <span class="bottom-nav-label" data-i18n="nav_katalog">Katalog</span>
+      </a>
+      <a href="about.html" class="bottom-nav-item" id="bnav-about">
+        <i class="fas fa-info-circle"></i>
+        <span class="bottom-nav-label" data-i18n="nav_about">Tentang Kami</span>
+      </a>
+      <a href="contact.html" class="bottom-nav-item" id="bnav-contact">
+        <i class="fas fa-phone"></i>
+        <span class="bottom-nav-label" data-i18n="nav_contact">Hubungi Kami</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/628568636423" target="_blank" class="floating-wa-btn" title="Hubungi Kami">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</body>
+</html>
