@@ -1,0 +1,9 @@
+/* home.css - Styles spesifik untuk halaman home */
+
+/* Membuat grid testimoni menjadi 2 kolom (berjejer 2-2) pada tampilan mobile */
+@media (max-width: 768px) {
+  #testi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+}
