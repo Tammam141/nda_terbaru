@@ -1,0 +1,31 @@
+/* contact.css - Styles spesifik untuk halaman kontak */
+
+/* Mengatur layout kartu kontak menjadi 2x2 di perangkat mobile (HP) */
+@media (max-width: 768px) {
+  .contact-page-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+  
+  /* Menyesuaikan padding dan ukuran teks agar lebih compact di layar kecil */
+  .contact-card {
+    padding: 1.25rem 0.5rem !important;
+    gap: 0.5rem !important;
+  }
+  
+  .contact-card-icon {
+    width: 45px !important;
+    height: 45px !important;
+    font-size: 1.2rem !important;
+  }
+  
+  .contact-card-title {
+    font-size: 0.9rem !important;
+    text-align: center;
+  }
+  
+  .contact-card-sub {
+    font-size: 0.7rem !important;
+    text-align: center;
+  }
+}

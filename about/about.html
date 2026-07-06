@@ -6,14 +6,15 @@
   <meta name="description" content="Tentang NDA Official — Perjalanan brand hijab premium dari awal mula hingga melayani muslimah di seluruh Indonesia." />
   <meta name="theme-color" content="#5D7CA9" />
   <title>Tentang Kami | NDA Official</title>
-  <link rel="website icon" type="image/png" href="Gambar/logoNDA.png" />
+  <link rel="website icon" type="image/png" href="../Gambar/logoNDA.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../shared/style.css" />
+  <link rel="stylesheet" href="about.css" />
 </head>
 <body>
 
@@ -27,15 +28,15 @@
   <nav id="main-navbar" role="navigation" aria-label="Navigasi Utama">
     <div class="container">
       <div class="navbar-inner">
-        <a href="index.html" class="navbar-brand" aria-label="NDA Official">
-          <img src="Gambar/logoNDA.png" alt="NDA Official Logo" class="navbar-logo" />
+        <a href="../home/index.html" class="navbar-brand" aria-label="NDA Official">
+          <img src="../Gambar/logoNDA.png" alt="NDA Official Logo" class="navbar-logo" />
           <span class="navbar-brand-text">NDA Official</span>
         </a>
         <ul class="navbar-nav" id="desktop-nav">
-          <li><a href="index.html"    class="nav-link" data-i18n="nav_home">Home</a></li>
-          <li><a href="katalog.html" class="nav-link" data-i18n="nav_katalog">Katalog</a></li>
-          <li><a href="about.html"   class="nav-link active" data-i18n="nav_about">Tentang Kami</a></li>
-          <li><a href="contact.html" class="nav-link" data-i18n="nav_contact">Hubungi Kami</a></li>
+          <li><a href="../home/index.html"    class="nav-link" data-i18n="nav_home">Home</a></li>
+          <li><a href="../katalog/katalog.html" class="nav-link" data-i18n="nav_katalog">Katalog</a></li>
+          <li><a href="../about/about.html"   class="nav-link active" data-i18n="nav_about">Tentang Kami</a></li>
+          <li><a href="../contact/contact.html" class="nav-link" data-i18n="nav_contact">Hubungi Kami</a></li>
         </ul>
         <div class="navbar-tools">
           <div class="lang-dropdown" id="lang-dropdown">
@@ -59,10 +60,10 @@
       </div>
     </div>
     <div class="mobile-menu" id="mobile-menu">
-      <a href="index.html"    class="nav-link" data-i18n="nav_home">Home</a>
-      <a href="katalog.html" class="nav-link" data-i18n="nav_katalog">Katalog</a>
-      <a href="about.html"   class="nav-link" data-i18n="nav_about">Tentang Kami</a>
-      <a href="contact.html" class="nav-link" data-i18n="nav_contact">Hubungi Kami</a>
+      <a href="../home/index.html"    class="nav-link" data-i18n="nav_home">Home</a>
+      <a href="../katalog/katalog.html" class="nav-link" data-i18n="nav_katalog">Katalog</a>
+      <a href="../about/about.html"   class="nav-link" data-i18n="nav_about">Tentang Kami</a>
+      <a href="../contact/contact.html" class="nav-link" data-i18n="nav_contact">Hubungi Kami</a>
     </div>
   </nav>
 
@@ -82,14 +83,14 @@
       <div class="container">
         <div class="about-story-grid">
           <div class="about-img-frame reveal">
-            <img src="Gambar/Sela.webp" alt="NDA Official Brand Story" loading="lazy" />
+            <img src="../Gambar/Sela.webp" alt="NDA Official Brand Story" loading="lazy" />
           </div>
           <div class="about-text-content reveal">
             <span class="section-badge" data-i18n="about_badge">Cerita Kami</span>
             <h2 class="section-heading" id="about-story-heading" data-i18n="about_title">Cerita Di Balik Keindahan</h2>
             <p data-i18n="about_desc1">NDA lahir dari keinginan sederhana: menghadirkan hijab yang nyaman dipakai seharian tanpa mengorbankan gaya modern. Kami percaya setiap wanita berhak tampil percaya diri dengan balutan busana yang menjaga nilai-nilai kesopanan.</p>
             <p data-i18n="about_desc2">Kami berkomitmen menjadi sahabat setia perjalanan hijrah Anda dengan kualitas bahan premium yang terpercaya, standar jahitan yang rapi, dan sentuhan kelembutan eksklusif di setiap produk kami.</p>
-            <a href="katalog.html" class="btn-more btn-more-filled" style="align-self:flex-start;" data-i18n="about_cta">
+            <a href="../katalog/katalog.html" class="btn-more btn-more-filled" style="align-self:flex-start;" data-i18n="about_cta">
               Lihat Koleksi Kami <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -168,13 +169,13 @@
           <p class="section-subtext" data-i18n="testi_sub">Ratusan ulasan jujur dari pelanggan setia yang telah merasakan kenyamanan produk kami.</p>
         </div>
         <div class="testi-grid" id="testi-grid" style="margin-top: var(--space-xl);">
-          <div class="testi-card reveal" tabindex="0" aria-label="Ulasan 1"><img src="Gambar/Komentar/1.jpg" alt="Ulasan Pelanggan 1" loading="lazy" /><div class="testi-overlay"></div></div>
-          <div class="testi-card reveal" tabindex="0" aria-label="Ulasan 2"><img src="Gambar/Komentar/2.jpg" alt="Ulasan Pelanggan 2" loading="lazy" /><div class="testi-overlay"></div></div>
-          <div class="testi-card reveal" tabindex="0" aria-label="Ulasan 3"><img src="Gambar/Komentar/3.jpg" alt="Ulasan Pelanggan 3" loading="lazy" /><div class="testi-overlay"></div></div>
-          <div class="testi-card reveal" tabindex="0" aria-label="Ulasan 4"><img src="Gambar/Komentar/4.jpg" alt="Ulasan Pelanggan 4" loading="lazy" /><div class="testi-overlay"></div></div>
-          <div class="testi-card reveal" tabindex="0" aria-label="Ulasan 5"><img src="Gambar/Komentar/5.jpg" alt="Ulasan Pelanggan 5" loading="lazy" /><div class="testi-overlay"></div></div>
-          <div class="testi-card reveal" tabindex="0" aria-label="Ulasan 6"><img src="Gambar/Komentar/6.jpeg" alt="Ulasan Pelanggan 6" loading="lazy" /><div class="testi-overlay"></div></div>
-          <div class="testi-card reveal" tabindex="0" aria-label="Ulasan 7"><img src="Gambar/Komentar/7.jpeg" alt="Ulasan Pelanggan 7" loading="lazy" /><div class="testi-overlay"></div></div>
+          <div class="testi-card reveal" tabindex="0" aria-label="Ulasan 1"><img src="../Gambar/Komentar/1.jpg" alt="Ulasan Pelanggan 1" loading="lazy" /><div class="testi-overlay"></div></div>
+          <div class="testi-card reveal" tabindex="0" aria-label="Ulasan 2"><img src="../Gambar/Komentar/2.jpg" alt="Ulasan Pelanggan 2" loading="lazy" /><div class="testi-overlay"></div></div>
+          <div class="testi-card reveal" tabindex="0" aria-label="Ulasan 3"><img src="../Gambar/Komentar/3.jpg" alt="Ulasan Pelanggan 3" loading="lazy" /><div class="testi-overlay"></div></div>
+          <div class="testi-card reveal" tabindex="0" aria-label="Ulasan 4"><img src="../Gambar/Komentar/4.jpg" alt="Ulasan Pelanggan 4" loading="lazy" /><div class="testi-overlay"></div></div>
+          <div class="testi-card reveal" tabindex="0" aria-label="Ulasan 5"><img src="../Gambar/Komentar/5.jpg" alt="Ulasan Pelanggan 5" loading="lazy" /><div class="testi-overlay"></div></div>
+          <div class="testi-card reveal" tabindex="0" aria-label="Ulasan 6"><img src="../Gambar/Komentar/6.jpeg" alt="Ulasan Pelanggan 6" loading="lazy" /><div class="testi-overlay"></div></div>
+          <div class="testi-card reveal" tabindex="0" aria-label="Ulasan 7"><img src="../Gambar/Komentar/7.jpeg" alt="Ulasan Pelanggan 7" loading="lazy" /><div class="testi-overlay"></div></div>
         </div>
       </div>
     </section>
@@ -186,14 +187,15 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <img src="Gambar/logoNDA.png" alt="NDA Official" class="footer-logo" />
+          <img src="../Gambar/logoNDA.png" alt="NDA Official" class="footer-logo" />
           <p class="footer-tagline" data-i18n="footer_tagline">Bring Beuty Feel Comfort.</p>
         </div>
-        <div class="footer-socials">
-          <a href="https://instagram.com/nda.official" target="_blank" rel="noopener noreferrer" class="social-link ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link fb" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-          <a href="https://shopee.co.id" target="_blank" rel="noopener noreferrer" class="social-link shopee" aria-label="Shopee"><i class="fas fa-store"></i></a>
-          <a href="https://tiktok.com/@nda.official" target="_blank" rel="noopener noreferrer" class="social-link tiktok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <div class="footer-socials">
+          <a href="https://www.instagram.com/nda.official.store/" target="_blank" rel="noopener noreferrer" class="social-link ig" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/1DcVybD8Mk/" target="_blank" rel="noopener noreferrer" class="social-link fb" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://shopee.co.id/nda.onlinestore" target="_blank" rel="noopener noreferrer" class="social-link shopee" aria-label="Shopee" title="Shopee Store"><i class="fas fa-store"></i></a>
+          <a href="https://www.tiktok.com/@nda.official.store" target="_blank" rel="noopener noreferrer" class="social-link tiktok" aria-label="TikTok" title="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://wa.me/628568636423" target="_blank" rel="noopener noreferrer" class="social-link wa" aria-label="WhatsApp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
       <div class="footer-divider" style="margin:1.5rem 0;"></div>
@@ -210,19 +212,19 @@
   <!-- ══ BOTTOM NAVIGATION (mobile) ══ -->
   <nav id="bottom-nav" aria-label="Navigasi Bawah">
     <div class="bottom-nav-inner">
-      <a href="index.html" class="bottom-nav-item" id="bnav-home">
+      <a href="../home/index.html" class="bottom-nav-item" id="bnav-home">
         <i class="fas fa-home"></i>
         <span class="bottom-nav-label" data-i18n="nav_home">Home</span>
       </a>
-      <a href="katalog.html" class="bottom-nav-item" id="bnav-katalog">
+      <a href="../katalog/katalog.html" class="bottom-nav-item" id="bnav-katalog">
         <i class="fas fa-book-open"></i>
         <span class="bottom-nav-label" data-i18n="nav_katalog">Katalog</span>
       </a>
-      <a href="about.html" class="bottom-nav-item" id="bnav-about">
+      <a href="../about/about.html" class="bottom-nav-item" id="bnav-about">
         <i class="fas fa-info-circle"></i>
         <span class="bottom-nav-label" data-i18n="nav_about">Tentang Kami</span>
       </a>
-      <a href="contact.html" class="bottom-nav-item" id="bnav-contact">
+      <a href="../contact/contact.html" class="bottom-nav-item" id="bnav-contact">
         <i class="fas fa-phone"></i>
         <span class="bottom-nav-label" data-i18n="nav_contact">Hubungi Kami</span>
       </a>
@@ -231,10 +233,11 @@
 
   <!-- Supabase JS Client -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="script.js"></script>
+  <script src="../shared/script.js"></script>
   <!-- Floating WhatsApp Button -->
   <a href="https://wa.me/628568636423" target="_blank" class="floating-wa-btn" title="Hubungi Kami">
     <i class="fab fa-whatsapp"></i>
   </a>
+  <script src="about.js"></script>
 </body>
 </html>
