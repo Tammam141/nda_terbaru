@@ -1,14 +1,727 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-bs-theme="light">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=home/index.html" />
-  <title>Redirecting...</title>
-  <script>
-    window.location.href = "home/index.html";
-  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="description"
+    content="NDA Official – Koleksi hijab premium dengan bahan berkualitas, desain eksklusif, dan harga terbaik. Temukan keanggunan dalam kenyamanan bersahaja." />
+  <meta property="og:title" content="NDA Official | Premium Hijab Collection" />
+  <meta property="og:description" content="Koleksi hijab premium, adem, dan eksklusif dari NDA Official." />
+  <meta property="og:image" content="Gambar/logoNDA.png" />
+  <meta name="theme-color" content="#5D7CA9" />
+  <title>NDA Official | Premium Hijab Lookbook</title>
+  <link rel="website icon" type="image/png" href="Gambar/logoNDA.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <!-- Bootstrap 5 CSS (for Modal component) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="shared/style.css" />
+  <link rel="stylesheet" href="home/home.css" />
 </head>
-<body>
-  Jika Anda tidak diarahkan secara otomatis, <a href="home/index.html">klik di sini</a>.
+
+<body class="lang-id">
+
+  <!-- ══ PROMO MODAL ══ -->
+  <div id="promoModal" class="promo-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="promo-modal-wrapper">
+      <div class="promo-modal-content">
+        <!-- Direct to Shopee Link -->
+        <a href="https://shopee.co.id/nda.onlinestore" target="_blank" rel="noopener noreferrer">
+          <!-- Placeholder Image for the Promo -->
+          <img src="Gambar/welcome.webp" alt="Pay Day Sale" class="promo-modal-img" />
+          <div class="promo-modal-btn" data-i18n="promo_btn">order sekarang</div>
+        </a>
+      </div>
+      <!-- Close Text below the modal box as in reference -->
+      <button class="promo-modal-close" id="promo-close" aria-label="Tutup Banner" data-i18n="promo_close">Tutup ✕</button>
+    </div>
+  </div>
+
+  <!-- ══ ALERT BANNER (Dynamic from Supabase `promos` table) ══ -->
+  <div id="alert-banner" role="alert">
+    <span id="supabase-promo-text" data-i18n="alert_text">🌙 Promo Spesial Gajian: Diskon s.d 15% di Shopee!
+      &nbsp;·&nbsp; <a href="https://shopee.co.id" target="_blank" rel="noopener noreferrer">Belanja Sekarang
+        →</a></span>
+    <button class="alert-close" id="alert-close-btn" aria-label="Tutup Banner">✕</button>
+  </div>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav id="main-navbar" role="navigation" aria-label="Navigasi Utama">
+    <div class="container">
+      <div class="navbar-inner">
+        <a href="index.html" class="navbar-brand" aria-label="NDA Official">
+          <img src="Gambar/logoNDA.png" alt="NDA Official Logo" class="navbar-logo" />
+          <span class="navbar-brand-text">NDA Official</span>
+        </a>
+        <ul class="navbar-nav" id="desktop-nav">
+          <li><a href="index.html" class="nav-link active" data-i18n="nav_home">Home</a></li>
+          <li><a href="katalog/katalog.html" class="nav-link" data-i18n="nav_katalog">Katalog</a></li>
+          <li><a href="about/about.html" class="nav-link" data-i18n="nav_about">Tentang Kami</a></li>
+          <li><a href="contact/contact.html" class="nav-link" data-i18n="nav_contact">Hubungi Kami</a></li>
+        </ul>
+        <div class="navbar-tools">
+          <div class="lang-dropdown" id="lang-dropdown">
+            <button class="lang-btn" id="lang-btn" aria-haspopup="listbox" aria-expanded="false"
+              aria-label="Pilih Bahasa">
+              <i class="fas fa-globe"></i>
+              <span id="current-lang-label">ID</span>
+              <i class="fas fa-caret-down"></i>
+            </button>
+            <div class="lang-dropdown-menu" id="lang-menu" role="listbox">
+              <div class="lang-option active" data-lang="id" role="option" tabindex="0">🇮🇩 Bahasa Indonesia</div>
+              <div class="lang-option" data-lang="en" role="option" tabindex="0">🇬🇧 English</div>
+            </div>
+          </div>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button class="hamburger" id="hamburger" aria-label="Buka Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html" class="nav-link" data-i18n="nav_home">Home</a>
+      <a href="katalog/katalog.html" class="nav-link" data-i18n="nav_katalog">Katalog</a>
+      <a href="about/about.html" class="nav-link" data-i18n="nav_about">Tentang Kami</a>
+      <a href="contact/contact.html" class="nav-link" data-i18n="nav_contact">Hubungi Kami</a>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section id="hero" aria-label="Hero Section">
+    <div class="hero-bg">
+      <img src="Gambar/landing.webp" alt="NDA Hijab Collection" loading="eager" fetchpriority="high" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge" data-i18n="hero_badge">✨ &nbsp; NDA Official Collection 2026</div>
+        <h1 class="hero-title" data-i18n="hero_title">
+          Bring Beuty Feel <em>Comfort</em>
+        </h1>
+        <p class="hero-desc" data-i18n="hero_desc">
+          Koleksi hijab premium yang dirancang khusus untuk kenyamanan seharian dengan sentuhan elegan nan anggun —
+          untuk muslimah modern yang berkarakter.
+        </p>
+        <div class="hero-cta">
+          <a href="katalog/katalog.html" class="btn-hero-primary" data-i18n="hero_btn_katalog">
+            <i class="fas fa-sparkles"></i> Lihat Koleksi
+          </a>
+          <a href="https://shopee.co.id/nda.onlinestore" target="_blank" rel="noopener noreferrer"
+            class="btn-hero-ghost" data-i18n="hero_btn_wa">
+            <i class="fas fa-tag"></i> Lihat Promo
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator" aria-hidden="true">
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- ══ BEST SELLER SLIDER ══ -->
+  <section id="katalog-preview"
+    style="padding: var(--section-padding); background: var(--nda-bg-main); transition: background var(--transition-slow);"
+    aria-labelledby="cat-preview-heading">
+    <div class="container">
+      <div class="text-center reveal">
+        <h2 class="section-heading text-uppercase" id="cat-preview-heading" data-i18n="cat_preview_title"
+          style="font-family: var(--font-heading); font-weight: 700; letter-spacing: 0.15em; color: var(--nda-primary); font-size: 2.2rem; margin-bottom: 0.5rem;">
+          PRODUK UNGGULAN</h2>
+        <p class="section-subtext" data-i18n="cat_preview_sub">Cuplikan dari koleksi terbaik kami — pesan langsung via TikTok Shop dan Shopee.</p>
+      </div>
+
+      <!-- Slider Viewport -->
+      <div class="products-slider-wrapper" id="products-slider">
+        <!-- Navigation Arrows -->
+        <button class="slider-arrow prev-arrow" id="prod-prev-btn" aria-label="Sebelumnya">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="slider-arrow next-arrow" id="prod-next-btn" aria-label="Selanjutnya">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- Track holding 9 cards -->
+        <div class="products-slider-track" id="products-track">
+
+          <!-- Card 1: Segiempat Arabian Voil -->
+          <article class="product-card" data-category="segi-empat">
+            <a href="detail/detail-arabianvoil.html" class="card-img-link">
+              <div class="card-img-wrap">
+                <img src="Gambar/Arabian-voil/1.jpg" alt="Segiempat Arabian Voil" loading="lazy"
+                  data-supabase-category="arabian-voil" data-supabase-index="1" />
+                <div class="card-tags">
+                  <span class="tag tag-segi">Segi Empat</span>
+                  <span class="tag tag-bahan">Arabian Voil</span>
+                </div>
+              </div>
+            </a>
+            <div class="card-body">
+              <a href="detail/detail-arabianvoil.html" class="card-title-link">
+                <h3 class="card-title">Segiempat Arabian Voil</h3>
+              </a>
+              <p class="card-desc" data-i18n="prod_arabian_desc">Bahan voile arabian premium yang tidak licin, dingin
+                menyentuh kulit, dan penuh berkelas.</p>
+              <div class="card-cta">
+                <a href="https://shopee.co.id/NDA-Pashmina-Voal-Pashmina-Arabian-Voile-Tekstur-Sangat-Halus-i.1352980252.42762558738"
+                  target="_blank" rel="noopener noreferrer" class="btn btn-shopee" data-i18n="btn_shopee"><i
+                    class="fas fa-store"></i> Shopee</a>
+                <a href="https://vt.tokopedia.com/t/ZS9MFF8McYwBL-KnQNE/" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-tiktok" data-i18n="btn_tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Segiempat Paris Jepang -->
+          <article class="product-card" data-category="segi-empat">
+            <a href="detail/detail-parisjepang.html" class="card-img-link">
+              <div class="card-img-wrap">
+                <img src="Gambar/Paris-Japan/1.JPG" alt="Segiempat Paris Jepang" loading="lazy"
+                  data-supabase-category="paris-jepang" data-supabase-index="1" />
+                <div class="card-tags">
+                  <span class="tag tag-segi">Segi Empat</span>
+                  <span class="tag tag-bahan">Paris Jepang</span>
+                </div>
+              </div>
+            </a>
+            <div class="card-body">
+              <a href="detail/detail-parisjepang.html" class="card-title-link">
+                <h3 class="card-title">Segiempat Paris Jepang</h3>
+              </a>
+              <p class="card-desc" data-i18n="prod_paris_jepang_desc">Lembut, serat rapat, dan memberikan tampilan
+                formal yang bersih dengan kesan premium.</p>
+              <div class="card-cta">
+                <a href="https://shopee.co.id/NDA-Paris-Jepang-Premium-Hijab-Segiempat-Paris-Jepang-i.1352980252.29030073511"
+                  target="_blank" rel="noopener noreferrer" class="btn btn-shopee" data-i18n="btn_shopee"><i
+                    class="fas fa-store"></i> Shopee</a>
+                <a href="https://vt.tokopedia.com/t/ZS9MFFjuxhgSj-DEA6I/" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-tiktok" data-i18n="btn_tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Pashmina Rayon Basic Vol 2 -->
+          <article class="product-card" data-category="pashmina">
+            <a href="detail/detail-rayon-basic.html" class="card-img-link">
+              <div class="card-img-wrap">
+                <img src="Gambar/Pashmina-Basic/1.JPG" alt="Pashmina Rayon Basic Vol 2" loading="lazy"
+                  data-supabase-category="rayon-basic-vol2" data-supabase-index="1" />
+                <div class="card-tags">
+                  <span class="tag tag-pash">Pashmina</span>
+                  <span class="tag tag-bahan">Rayon Basic Vol 2</span>
+                </div>
+              </div>
+            </a>
+            <div class="card-body">
+              <a href="detail/detail-rayon-basic.html" class="card-title-link">
+                <h3 class="card-title">Pashmina Rayon Basic Vol 2</h3>
+              </a>
+              <p class="card-desc" data-i18n="prod_rayon2_desc">Sangat adem, menyerap keringat dengan baik, jatuh
+                sempurna, dan super nyaman untuk hari aktif Anda.</p>
+              <div class="card-cta">
+                <a href="https://shopee.co.id/NDA-Pashmina-Cotton-Rayon-Airflow-Basic-Hijab-Pashmina-Kaos-Rayon-Basic-Tekstur-Halus-Vol-2-i.1352980252.43217613870"
+                  target="_blank" rel="noopener noreferrer" class="btn btn-shopee" data-i18n="btn_shopee"><i
+                    class="fas fa-store"></i> Shopee</a>
+                <a href="https://vt.tokopedia.com/t/ZS9MFF5RBCweH-meRId/" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-tiktok" data-i18n="btn_tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Segiempat Paris Voal -->
+          <article class="product-card" data-category="segi-empat">
+            <a href="detail/detail-parisvoal.html" class="card-img-link">
+              <div class="card-img-wrap">
+                <img src="Gambar/Paris-Voal/1.png" alt="Segiempat Paris Voal" loading="lazy"
+                  data-supabase-category="paris-voal" data-supabase-index="1" />
+                <div class="card-tags">
+                  <span class="tag tag-segi">Segi Empat</span>
+                  <span class="tag tag-bahan">Paris Voal</span>
+                </div>
+              </div>
+            </a>
+            <div class="card-body">
+              <a href="detail/detail-parisvoal.html" class="card-title-link">
+                <h3 class="card-title">Segiempat Paris Voal</h3>
+              </a>
+              <p class="card-desc" data-i18n="prod_paris_voal_desc">Ringan, tegak di dahi, dan sangat mudah diatur untuk
+                gaya sehari-hari yang segar and elegan.</p>
+              <div class="card-cta">
+                <a href="https://shopee.co.id/NDA-Paris-Voal-Premium-Hijab-Segiempat-Paris-Premium-Kerudung-Segiempat-i.1352980252.26962955188"
+                  target="_blank" rel="noopener noreferrer" class="btn btn-shopee" data-i18n="btn_shopee"><i
+                    class="fas fa-store"></i> Shopee</a>
+                <a href="https://vt.tiktok.com/ZSC7vHn9a/?page=Mall" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-tiktok" data-i18n="btn_tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5: Segiempat Ceruti -->
+          <article class="product-card" data-category="segi-empat">
+            <a href="detail/detail-ceruti.html" class="card-img-link">
+              <div class="card-img-wrap">
+                <img src="Gambar/Ceruti/1.jpg" alt="Segiempat Ceruti" loading="lazy" data-supabase-category="ceruti"
+                  data-supabase-index="1" />
+                <div class="card-tags">
+                  <span class="tag tag-segi">Segi Empat</span>
+                  <span class="tag tag-bahan">Ceruti</span>
+                </div>
+              </div>
+            </a>
+            <div class="card-body">
+              <a href="detail/detail-ceruti.html" class="card-title-link">
+                <h3 class="card-title">Segiempat Ceruti</h3>
+              </a>
+              <p class="card-desc" data-i18n="prod_ceruty_desc">Tekstur kulit jeruk yang anggun, flowy, mewah, dan
+                menawan — sempurna untuk acara spesial.</p>
+              <div class="card-cta">
+                <a href="https://shopee.co.id/NDA-Pashmina-Ceruty-Babydoll-Premium-Hijab-Pashmina-Ceruty-i.1352980252.26770695661"
+                  target="_blank" rel="noopener noreferrer" class="btn btn-shopee" data-i18n="btn_shopee"><i
+                    class="fas fa-store"></i> Shopee</a>
+                <a href="https://vt.tiktok.com/ZSC7vHn9a/?page=Mall" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-tiktok" data-i18n="btn_tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6: Pashmina Rayon Basic Vol.1 -->
+          <article class="product-card" data-category="pashmina">
+            <a href="detail/detail-rayon.html" class="card-img-link">
+              <div class="card-img-wrap">
+                <img src="Gambar/Basic-Vol1/1.jpg" alt="Pashmina Rayon Basic Vol.1" loading="lazy"
+                  data-supabase-category="rayon-basic-vol1" data-supabase-index="1" />
+                <div class="card-tags">
+                  <span class="tag tag-pash">Pashmina</span>
+                  <span class="tag tag-bahan">Rayon Basic</span>
+                </div>
+              </div>
+            </a>
+            <div class="card-body">
+              <a href="detail/detail-rayon.html" class="card-title-link">
+                <h3 class="card-title">Pashmina Rayon Basic Vol.1</h3>
+              </a>
+              <p class="card-desc" data-i18n="prod_rayon1_desc">Bahan rayon basic berkualitas dengan gramasi besar dan
+                jahit tepi rapi — pilihan seharian terbaik.</p>
+              <div class="card-cta">
+                <a href="https://shopee.co.id/NDA-Pashmina-Kaos-Hijab-Pashmina-Cotton-Rayon-Premium-i.1352980252.27562941632"
+                  target="_blank" rel="noopener noreferrer" class="btn btn-shopee" data-i18n="btn_shopee"><i
+                    class="fas fa-store"></i> Shopee</a>
+                <a href="https://vt.tiktok.com/ZSC7vHn9a/?page=Mall" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-tiktok" data-i18n="btn_tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 7: Pashmina Oval Edition -->
+          <article class="product-card" data-category="pashmina">
+            <a href="detail/detail-rayon-oval.html" class="card-img-link">
+              <div class="card-img-wrap">
+                <img src="Gambar/Pashmina-Oval/1.jpg" alt="Pashmina Oval Edition" loading="lazy"
+                  data-supabase-category="pashmina-oval" data-supabase-index="1" />
+                <div class="card-tags">
+                  <span class="tag tag-pash">Pashmina</span>
+                  <span class="tag tag-bahan">Oval Design</span>
+                </div>
+              </div>
+            </a>
+            <div class="card-body">
+              <a href="detail/detail-rayon-oval.html" class="card-title-link">
+                <h3 class="card-title">Pashmina Oval Edition</h3>
+              </a>
+              <p class="card-desc" data-i18n="prod_rayon_oval_desc">Desain pashmina oval di bagian belakang yang syar'i,
+                flowy, dan penuh elegance.</p>
+              <div class="card-cta">
+                <a href="https://shopee.co.id/nda.onlinestore" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-shopee" data-i18n="btn_shopee"><i class="fas fa-store"></i> Shopee</a>
+                <a href="https://vt.tokopedia.com/t/ZS9MFFyWA172g-qkbU6/" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-tiktok" data-i18n="btn_tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 8: Bergo Jersey Size M -->
+          <article class="product-card" data-category="bergo">
+            <a href="detail/detail-bergo-m.html" class="card-img-link">
+              <div class="card-img-wrap">
+                <img src="Gambar/Bergo-M/1.jpg" alt="Bergo Jersey Size M" loading="lazy"
+                  data-supabase-category="bergo-m" data-supabase-index="1" />
+                <div class="card-tags">
+                  <span class="tag tag-bergo">Bergo</span>
+                  <span class="tag tag-bahan">Jersey — M</span>
+                </div>
+              </div>
+            </a>
+            <div class="card-body">
+              <a href="detail/detail-bergo-m.html" class="card-title-link">
+                <h3 class="card-title">Bergo Jersey Size M</h3>
+              </a>
+              <p class="card-desc" data-i18n="prod_bergo_m_desc">Hijab instan jersey ukuran M yang praktis, stretch,
+                cocok untuk olahraga dan santai harian.</p>
+              <div class="card-cta">
+                <a href="https://shopee.co.id/NDA-Bergo-Sport-Non-Pet-Jersey-Jilbab-Instan-Malay-Bergo-Instan-Jersey-Size-M-i.1352980252.24976939982"
+                  target="_blank" rel="noopener noreferrer" class="btn btn-shopee" data-i18n="btn_shopee"><i
+                    class="fas fa-store"></i> Shopee</a>
+                <a href="https://vt.tokopedia.com/t/ZS9MFF6hVwSxS-WWpl7/" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-tiktok" data-i18n="btn_tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 9: Bergo Jersey Size L -->
+          <article class="product-card" data-category="bergo">
+            <a href="detail/detail-bergo-l.html" class="card-img-link">
+              <div class="card-img-wrap">
+                <img src="Gambar/Bergo-L/1.JPG" alt="Bergo Jersey Size L" loading="lazy"
+                  data-supabase-category="bergo-l" data-supabase-index="1" />
+                <div class="card-tags">
+                  <span class="tag tag-bergo">Bergo</span>
+                  <span class="tag tag-bahan">Jersey — L</span>
+                </div>
+              </div>
+            </a>
+            <div class="card-body">
+              <a href="detail/detail-bergo-l.html" class="card-title-link">
+                <h3 class="card-title">Bergo Jersey Size L</h3>
+              </a>
+              <p class="card-desc" data-i18n="prod_bergo_l_desc">Hijab instan jersey ukuran L yang menutup dada secara
+                sempurna dengan bahan adem dan nyaman.</p>
+              <div class="card-cta">
+                <a href="https://shopee.co.id/NDA-Bergo-Sport-Non-Pet-Jersey-Jilbab-Instan-Malay-Bergo-Instan-Jersey-Size-L-i.1352980252.28476939982"
+                  target="_blank" rel="noopener noreferrer" class="btn btn-shopee" data-i18n="btn_shopee"><i
+                    class="fas fa-store"></i> Shopee</a>
+                <a href="https://vt.tokopedia.com/t/ZS9MFFB3fx73G-BDESb/" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-tiktok" data-i18n="btn_tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Slider Dots Pagination -->
+      <div class="products-dots" id="products-dots" role="tablist" aria-label="Navigasi Slide Produk"></div>
+
+      <!-- Lihat Lainnya Button styled like screenshot -->
+      <div class="text-center mt-5 reveal">
+        <a href="katalog/katalog.html" class="btn-lihat-lainnya" data-i18n="btn_lihat_lainnya">
+          LIHAT LAINNYA
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ VIDEO CAMPAIGN SECTION ══ -->
+  <section id="campaign-video"
+    style="padding: var(--section-padding); background: var(--nda-bg-main); transition: background var(--transition-slow);">
+    <div class="container">
+      <div class="video-card reveal">
+        <div class="video-container">
+          <video data-supabase-video="video-1783413519027" src="Gambar/video3.mp4" autoplay muted loop playsinline controls></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ KEUNGGULAN (TEASER) ══ -->
+  <section id="keunggulan" aria-labelledby="keunggulan-heading">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-badge" data-i18n="val_badge">Keunggulan Kami</span>
+        <h2 class="section-heading" id="keunggulan-heading" data-i18n="val_title">Kenapa Memilih NDA?</h2>
+        <p class="section-subtext" data-i18n="val_sub">Setiap detail dirancang untuk memberikan pengalaman berhijab
+          terbaik yang tak terlupakan.</p>
+      </div>
+      <div class="keunggulan-grid">
+        <div class="keunggulan-card reveal">
+          <div class="keunggulan-img-wrap">
+            <img src="Gambar/Keunggulan/bahan.jpg" alt="Bahan Premium NDA" loading="lazy" />
+            <div class="keunggulan-img-overlay"></div>
+            <div class="keunggulan-icon"><i class="fas fa-leaf"></i></div>
+          </div>
+          <div class="keunggulan-body">
+            <h3 class="keunggulan-title" data-i18n="val_bahan_title">Bahan Premium</h3>
+            <p class="keunggulan-desc" data-i18n="val_bahan_desc">Material terbaik kelas dunia — adem, lembut, tidak
+              menerawang, dan awet.</p>
+          </div>
+        </div>
+        <div class="keunggulan-card reveal">
+          <div class="keunggulan-img-wrap">
+            <img src="Gambar/Keunggulan/desain.jpg" alt="Desain Eksklusif NDA" loading="lazy" />
+            <div class="keunggulan-img-overlay"></div>
+            <div class="keunggulan-icon"><i class="fas fa-paint-brush"></i></div>
+          </div>
+          <div class="keunggulan-body">
+            <h3 class="keunggulan-title" data-i18n="val_desain_title">Desain Eksklusif</h3>
+            <p class="keunggulan-desc" data-i18n="val_desain_desc">Modern, anggun, dan minimalis — cocok untuk segala
+              aktivitas Anda.</p>
+          </div>
+        </div>
+        <div class="keunggulan-card reveal">
+          <div class="keunggulan-img-wrap">
+            <img src="Gambar/Keunggulan/harga.jpg" alt="Harga Terbaik NDA" loading="lazy" />
+            <div class="keunggulan-img-overlay"></div>
+            <div class="keunggulan-icon"><i class="fas fa-tags"></i></div>
+          </div>
+          <div class="keunggulan-body">
+            <h3 class="keunggulan-title" data-i18n="val_harga_title">Harga Terbaik</h3>
+            <p class="keunggulan-desc" data-i18n="val_harga_desc">Kualitas premium yang tetap ramah di kantong untuk
+              semua wanita.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Slider (hidden on desktop via CSS) -->
+      <div class="keunggulan-slider-wrapper" id="keunggulan-slider" aria-label="Keunggulan NDA">
+        <div class="keunggulan-slider-track" id="keunggulan-track">
+          <div class="keunggulan-card">
+            <div class="keunggulan-img-wrap">
+              <img src="Gambar/Keunggulan/bahan.jpg" alt="Bahan Premium NDA" loading="lazy" />
+              <div class="keunggulan-img-overlay"></div>
+              <div class="keunggulan-icon"><i class="fas fa-leaf"></i></div>
+            </div>
+            <div class="keunggulan-body">
+              <h3 class="keunggulan-title" data-i18n="val_bahan_title">Bahan Premium</h3>
+              <p class="keunggulan-desc" data-i18n="val_bahan_desc">Material terbaik kelas dunia — adem, lembut, tidak
+                menerawang, dan awet.</p>
+            </div>
+          </div>
+          <div class="keunggulan-card">
+            <div class="keunggulan-img-wrap">
+              <img src="Gambar/Keunggulan/desain.jpg" alt="Desain Eksklusif NDA" loading="lazy" />
+              <div class="keunggulan-img-overlay"></div>
+              <div class="keunggulan-icon"><i class="fas fa-paint-brush"></i></div>
+            </div>
+            <div class="keunggulan-body">
+              <h3 class="keunggulan-title" data-i18n="val_desain_title">Desain Eksklusif</h3>
+              <p class="keunggulan-desc" data-i18n="val_desain_desc">Modern, anggun, dan minimalis — cocok untuk segala
+                aktivitas Anda.</p>
+            </div>
+          </div>
+          <div class="keunggulan-card">
+            <div class="keunggulan-img-wrap">
+              <img src="Gambar/Keunggulan/harga.jpg" alt="Harga Terbaik NDA" loading="lazy" />
+              <div class="keunggulan-img-overlay"></div>
+              <div class="keunggulan-icon"><i class="fas fa-tags"></i></div>
+            </div>
+            <div class="keunggulan-body">
+              <h3 class="keunggulan-title" data-i18n="val_harga_title">Harga Terbaik</h3>
+              <p class="keunggulan-desc" data-i18n="val_harga_desc">Kualitas premium yang tetap ramah di kantong untuk
+                semua wanita.</p>
+            </div>
+          </div>
+        </div>
+        <div class="keunggulan-dots" id="keunggulan-dots" role="tablist" aria-label="Slide Navigation"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ PERJALANAN TEASER (2 milestone) ══ -->
+  <section id="perjalanan-preview"
+    style="padding: var(--section-padding); background: var(--nda-bg-main); transition: background var(--transition-slow);"
+    aria-labelledby="journey-preview-heading">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-badge" data-i18n="timeline_badge">Tentang Kami</span>
+        <h2 class="section-heading" id="journey-preview-heading" data-i18n="home_journey_title">Perjalanan NDA</h2>
+        <p class="section-subtext" data-i18n="home_journey_sub">Dari sebuah mimpi sederhana menuju keanggunan yang
+          menyentuh hati.</p>
+      </div>
+      <div class="timeline" style="margin-top: var(--space-xl);">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"><ph-icon name="seedling" weight="fill" style="font-size:1.1rem;"></ph-icon></div>
+          <div class="timeline-content">
+            <div class="timeline-year" data-i18n="time_year_2023">2023</div>
+            <h3 class="timeline-title" data-i18n="time_2023_title">Awal Mula</h3>
+            <p class="timeline-desc" data-i18n="time_2023_desc">Perancangan konsep, riset bahan, serta pematangan
+              kualitas produk untuk menciptakan standar kenyamanan baru.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"><i class="fas fa-sparkles"></i></div>
+          <div class="timeline-content">
+            <div class="timeline-year" data-i18n="time_year_2024">2024</div>
+            <h3 class="timeline-title" data-i18n="time_2024_title">Koleksi Perdana</h3>
+            <p class="timeline-desc" data-i18n="time_2024_desc">Peluncuran resmi Pashmina Cotton Rayon dan Segiempat
+              Paris Voal yang langsung mendapat sambutan hangat.</p>
+          </div>
+        </div>
+      </div>
+      <div class="section-more-row reveal">
+        <a href="about/about.html" class="btn-more" data-i18n="home_journey_more">
+          Baca Selengkapnya <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TESTIMONI TEASER (4 foto) ══ -->
+  <section id="testimoni-preview"
+    style="padding: var(--section-padding); background: var(--nda-bg-secondary); transition: background var(--transition-slow);"
+    aria-labelledby="testi-preview-heading">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-badge" data-i18n="testi_badge">Ulasan Nyata</span>
+        <h2 class="section-heading" id="testi-preview-heading" data-i18n="testi_title">Kata Mereka 💬</h2>
+        <p class="section-subtext" data-i18n="testi_sub">Ulasan jujur dari pelanggan setia yang telah merasakan
+          kenyamanan produk kami.</p>
+      </div>
+      <div class="testi-grid" id="testi-grid" style="margin-top: var(--space-xl);">
+        <div class="testi-card reveal" tabindex="0" aria-label="Buka ulasan 1">
+          <img src="Gambar/Komentar/1.jpg" alt="Ulasan Pelanggan 1" loading="lazy" />
+          <div class="testi-overlay"></div>
+        </div>
+        <div class="testi-card reveal" tabindex="0" aria-label="Buka ulasan 2">
+          <img src="Gambar/Komentar/2.jpg" alt="Ulasan Pelanggan 2" loading="lazy" />
+          <div class="testi-overlay"></div>
+        </div>
+        <div class="testi-card reveal" tabindex="0" aria-label="Buka ulasan 3">
+          <img src="Gambar/Komentar/3.jpg" alt="Ulasan Pelanggan 3" loading="lazy" />
+          <div class="testi-overlay"></div>
+        </div>
+        <div class="testi-card reveal" tabindex="0" aria-label="Buka ulasan 4">
+          <img src="Gambar/Komentar/4.jpg" alt="Ulasan Pelanggan 4" loading="lazy" />
+          <div class="testi-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CONTACT CTA STRIP ══ -->
+  <div class="contact-cta-strip">
+    <div class="container">
+      <h2 data-i18n="home_cta_title">Ada Pertanyaan? Kami Siap Membantu!</h2>
+      <p data-i18n="home_cta_sub">Hubungi tim admin kami untuk konsultasi produk, pertanyaan ukuran, atau info
+        pembelian.</p>
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap; justify-content:center;">
+        <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="btn btn-wa"
+          data-i18n="home_cta_btn_wa">
+          <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+        </a>
+        <a href="contact/contact.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.5); color:white;"
+          data-i18n="home_cta_btn_more">
+          Lihat Semua Kontak
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <footer id="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="Gambar/logoNDA.png" alt="NDA Official" class="footer-logo" />
+          <p class="footer-tagline" data-i18n="footer_tagline">Bring Beuty Feel Comfort.</p>
+        </div>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/nda.official.store/" target="_blank" rel="noopener noreferrer" class="social-link ig" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/1DcVybD8Mk/" target="_blank" rel="noopener noreferrer" class="social-link fb" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://shopee.co.id/nda.onlinestore" target="_blank" rel="noopener noreferrer" class="social-link shopee" aria-label="Shopee" title="Shopee Store"><i class="fas fa-store"></i></a>
+          <a href="https://www.tiktok.com/@nda.official.store" target="_blank" rel="noopener noreferrer" class="social-link tiktok" aria-label="TikTok" title="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://wa.me/628568636423" target="_blank" rel="noopener noreferrer" class="social-link wa" aria-label="WhatsApp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-divider" style="margin:1.5rem 0;"></div>
+      <p class="footer-copyright text-center" data-i18n="footer_copyright">© 2026 NDA Official. Seluruh Hak Cipta
+        Dilindungi.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Tampilan Ulasan">
+    <button id="lightbox-close" aria-label="Tutup">✕</button>
+    <img src="" alt="Ulasan Pelanggan" id="lightbox-img" />
+  </div>
+
+  <!-- ══ PRODUCT DETAIL MODAL (Bootstrap 5 Modal — populated by JS) ══ -->
+  <div class="modal fade" id="productDetailModal" tabindex="-1" aria-labelledby="productDetailModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content sb-modal-content">
+        <button type="button" class="sb-modal-close" data-bs-dismiss="modal" aria-label="Tutup">✕</button>
+        <div class="modal-body sb-modal-body">
+          <div class="sb-modal-grid">
+            <!-- Left: Image Gallery -->
+            <div class="sb-modal-gallery">
+              <div class="sb-modal-main-img-wrap">
+                <img id="sb-modal-main-img" src="" alt="Product" />
+              </div>
+              <div class="sb-modal-thumbs" id="sb-modal-thumbs">
+                <!-- Thumbnail images injected by JS -->
+              </div>
+            </div>
+            <!-- Right: Product Info -->
+            <div class="sb-modal-info">
+              <span class="sb-modal-category" id="sb-modal-category"></span>
+              <h2 class="sb-modal-title" id="sb-modal-title"></h2>
+              <p class="sb-modal-desc" id="sb-modal-desc"></p>
+              <div class="sb-modal-cta">
+                <a id="sb-modal-wa" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-wa sb-modal-btn">
+                  <i class="fab fa-whatsapp"></i> <span data-i18n="btn_wa">WhatsApp</span>
+                </a>
+                <a id="sb-modal-shopee" href="#" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-shopee sb-modal-btn">
+                  <i class="fas fa-store"></i> <span data-i18n="btn_shopee">Shopee</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ BOTTOM NAVIGATION (mobile) ══ -->
+  <nav id="bottom-nav" aria-label="Navigasi Bawah">
+    <div class="bottom-nav-inner">
+      <a href="index.html" class="bottom-nav-item" id="bnav-home">
+        <i class="fas fa-home"></i>
+        <span class="bottom-nav-label" data-i18n="nav_home">Home</span>
+      </a>
+      <a href="katalog/katalog.html" class="bottom-nav-item" id="bnav-katalog">
+        <i class="fas fa-book-open"></i>
+        <span class="bottom-nav-label" data-i18n="nav_katalog">Katalog</span>
+      </a>
+      <a href="about/about.html" class="bottom-nav-item" id="bnav-about">
+        <i class="fas fa-info-circle"></i>
+        <span class="bottom-nav-label" data-i18n="nav_about">Tentang Kami</span>
+      </a>
+      <a href="contact/contact.html" class="bottom-nav-item" id="bnav-contact">
+        <i class="fas fa-phone"></i>
+        <span class="bottom-nav-label" data-i18n="nav_contact">Hubungi Kami</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Bootstrap 5 JS Bundle (for Modal) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Supabase Client Config -->
+  <script src="shared/supabase-client.js"></script>
+  <!-- Shopee Reviews Loader -->
+  <script src="home/reviews.js"></script>
+  <!-- Dynamic Videos Loader -->
+  <script src="shared/videos.js"></script>
+  <!-- Catalog Images Loader -->
+  <script src="katalog/catalog-images.js"></script>
+  <!-- Main Script (existing) -->
+  <script src="shared/script.js"></script>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/628568636423" target="_blank" class="floating-wa-btn" title="Hubungi Kami">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <script src="home/home.js"></script>
 </body>
 </html>
