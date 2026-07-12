@@ -24,8 +24,8 @@
 const translations = {
 
     id: {
-        /* â”€â”€ Alert Banner â”€â”€ */
-        alert_text: '🌙 Promo Spesial Gajian: Diskon s.d 15% di Shopee! &nbsp;·&nbsp; <a href="https://shopee.co.id" target="_blank" rel="noopener noreferrer">Belanja Sekarang →</a>',
+        /* ── Alert Banner ── */
+        alert_text: 'Promo Terbatas! Checkout Sekarang & Dapatkan Gratis Ongkir. &nbsp;·&nbsp; <a href="https://shopee.co.id/nda.onlinestore" target="_blank" rel="noopener noreferrer">Belanja Sekarang →</a>',
 
         /* â”€â”€ Navbar â”€â”€ */
         nav_home: 'Home',
@@ -186,7 +186,7 @@ const translations = {
        ══════════════════════════════════════════════════════════════════ */
     en: {
         /* ── Alert Banner ── */
-        alert_text: '🌙 Special Payday Promo: Up to 15% Off on Shopee! &nbsp;·&nbsp; <a href="https://shopee.co.id" target="_blank" rel="noopener noreferrer">Shop Now →</a>',
+        alert_text: 'Limited Time Promo! Checkout Now & Get Free Shipping. &nbsp;·&nbsp; <a href="https://shopee.co.id/nda.onlinestore" target="_blank" rel="noopener noreferrer">Shop Now →</a>',
 
         /* ── Navbar ── */
         nav_home: 'Home',
@@ -999,7 +999,12 @@ async function initPromotions() {
                 promoTextEl.innerHTML = `${text || ''} &nbsp;&middot;&nbsp; ${anchorHtml}`;
                 banner.classList.remove('hidden');
             } else {
-                banner.classList.add('hidden');
+                const text = currentLang === 'id' ? 'Promo Terbatas! Checkout Sekarang & Dapatkan Gratis Ongkir.' : 'Limited Time Promo! Checkout Now & Get Free Shipping.';
+                const linkText = currentLang === 'id' ? 'Belanja Sekarang →' : 'Shop Now →';
+                const anchorHtml = `<a href="https://shopee.co.id/nda.onlinestore" target="_blank" rel="noopener noreferrer">${linkText}</a>`;
+
+                promoTextEl.innerHTML = `${text} &nbsp;&middot;&nbsp; ${anchorHtml}`;
+                banner.classList.remove('hidden');
             }
         }
 
